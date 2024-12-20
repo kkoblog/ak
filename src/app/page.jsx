@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 
 function MainComponent() {
@@ -8,6 +8,15 @@ function MainComponent() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const consultationRef = useRef(null);
+  const section1Ref = useRef(null);
+  const section2Ref = useRef(null);
+  const section3Ref = useRef(null);
+  const section4Ref = useRef(null);
+
+  const isSection1InView = useInView(section1Ref, { once: true, margin: "-100px" });
+  const isSection2InView = useInView(section2Ref, { once: true, margin: "-100px" });
+  const isSection3InView = useInView(section3Ref, { once: true, margin: "-100px" });
+  const isSection4InView = useInView(section4Ref, { once: true, margin: "-100px" });
 
   useEffect(() => {
     setIsVisible(true);
@@ -26,25 +35,38 @@ function MainComponent() {
   return (
     <div className="min-h-screen bg-[#171717] text-white font-poppins">
       <div className="fixed top-0 left-0 right-0 z-50 bg-[#171717]/95 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="text-xl md:text-2xl font-bold text-[#0496FB]">
+        <motion.div
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+            className="text-xl md:text-2xl font-bold text-[#0496FB]"
+          >
             AK講座
-          </div>
-          <div className="relative group flex items-center gap-2">
-            <button
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="relative group flex items-center gap-2"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={scrollToConsultation}
               className="bg-[#0496FB] text-white px-6 py-2 rounded-full text-sm md:text-base hover:bg-white hover:text-[#0496FB] transition-all duration-300 flex items-center gap-2"
             >
               <span>無料面談</span>
-            </button>
-            <div className="absolute right-11 top-1/2 -translate-y-1/2 w-0 h-0 
-              border-t-[8px] border-t-transparent 
-              border-l-[8px] border-l-[#0496FB] 
-              border-b-[8px] border-b-transparent
-              group-hover:border-l-white
-              transition-all duration-300"
-            />
-            <div className="w-10 h-10 rounded-full overflow-hidden">
+            </motion.button>
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.2 }}
+              className="w-10 h-10 rounded-full overflow-hidden"
+            >
               <Image
                 src="/image/ak.png"
                 alt="Avatar"
@@ -52,9 +74,9 @@ function MainComponent() {
                 height={40}
                 className="w-full h-full object-cover"
               />
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
       <div className="max-w-5xl mx-auto px-4 md:px-8 py-12 space-y-16 md:space-y-24 pt-20">
         <header className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-20">
@@ -133,11 +155,15 @@ function MainComponent() {
             <div className="absolute top-0 right-1/3 w-1/3 h-full bg-gradient-to-b from-[#0496FB]/5 via-transparent to-transparent transform skew-x-12 opacity-30" />
           </div>
         </header>
-        <section className="py-24 bg-[#1E1E1E]">
-          <div className="max-w-7xl mx-auto px-4">
+        <section ref={section1Ref} className="py-24 bg-[#1E1E1E]">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={isSection1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-7xl mx-auto px-4"
+          >
             <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-center mb-8 md:mb-16">
-              <span className="text-[#0496FB]">こんな悩み</span>
-              ありませんか？
+              <span className="text-[#0496FB]">こんな悩み</span>ありませんか？
             </h2>
             <div className="max-w-4xl mx-auto">
               <motion.div
@@ -192,13 +218,17 @@ function MainComponent() {
                 </div>
               </motion.div>
             </div>
-          </div>
+          </motion.div>
         </section>
-        <section className="py-24 bg-[#1E1E1E]">
-          <div className="max-w-7xl mx-auto px-4">
+        <section ref={section2Ref} className="py-24 bg-[#1E1E1E]">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={isSection2InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-7xl mx-auto px-4"
+          >
             <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-center mb-8 md:mb-16">
-              <span className="text-[#0496FB]">独立・起業</span>
-              に最も重要なこと
+              <span className="text-[#0496FB]">独立・起業</span>に最も重要なこと
             </h2>
             <div className="max-w-4xl mx-auto">
               <motion.div
@@ -255,19 +285,17 @@ function MainComponent() {
                 </div>
               </motion.div>
             </div>
-          </div>
+          </motion.div>
         </section>
-        <section className="py-24 bg-[#1E1E1E]">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-center mb-8">
-              <span className="text-[#0496FB] block text-3xl sm:text-5xl md:text-6xl mb-2">
-                ストック×フロー収入
-              </span>
-              で
-              <br className="hidden sm:block" />
-              <span className="text-xl sm:text-2xl md:text-4xl block mt-2">
-                あなたの人生が変わる
-              </span>
+        <section ref={section3Ref} className="py-24 bg-[#1E1E1E]">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={isSection3InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-7xl mx-auto px-4"
+          >
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-8">
+              <span className="text-[#0496FB]">ストック×フロー収入</span>で
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -362,7 +390,7 @@ function MainComponent() {
                 
               </motion.div>
             </div>
-          </div>
+          </motion.div>
         </section>
         <div className="mt-16">
           <motion.div
@@ -508,11 +536,7 @@ function MainComponent() {
                 width={1200}
                 height={800}
                 className="w-full h-auto max-h-[80vh] object-contain rounded-xl shadow-2xl mx-auto cursor-pointer md:cursor-default"
-                onClick={() => {
-                  if (window.innerWidth <= 768) {
-                    setSelectedImage("/image/nagare.png");
-                  }
-                }}
+                onClick={() => handleImageClick("/image/nagare.png")}
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1E1E1E] via-transparent to-transparent opacity-30"></div>
@@ -744,61 +768,37 @@ function MainComponent() {
             </div>
           </div>
         </motion.div>
-        <section className="py-12 md:py-24">
-          <div className="max-w-4xl mx-auto px-4">
+        <section ref={section4Ref} className="py-12 md:py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={isSection4InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto px-4"
+          >
             <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-center mb-8 md:mb-16">
               よくある<span className="text-[#0496FB]">質問</span>
             </h2>
             <div className="space-y-4 md:space-y-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <div className="bg-[#252525] rounded-2xl p-4 md:p-8 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 flex items-center">
-                    <span className="text-[#0496FB] mr-2 md:mr-4">Q.</span>
-                    本当に個人の能力は関係ないのですか？
-                  </h3>
-                  <p className="text-base sm:text-lg md:text-xl text-[#A4A4A4] ml-6 md:ml-10">
-                    はい。全てマニュアル通りに実行すれば、誰でもできます。
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                <div className="bg-[#252525] rounded-2xl p-4 md:p-8 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 flex items-center">
-                    <span className="text-[#0496FB] mr-2 md:mr-4">Q.</span>
-                    どのくらいの期間で収入が得られますか？
-                  </h3>
-                  <p className="text-base sm:text-lg md:text-xl text-[#A4A4A4] ml-6 md:ml-10">
-                    個々の状況により異なりますが、今年中には確実に2つの収入の柱を確立できます。
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                <div className="bg-[#252525] rounded-2xl p-4 md:p-8 transform hover:scale-105 transition-all duration-300 shadow-xl">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 flex items-center">
-                    <span className="text-[#0496FB] mr-2 md:mr-4">Q.</span>
-                    本当に匿名で実現できますか？
-                  </h3>
-                  <p className="text-base sm:text-lg md:text-xl text-[#A4A4A4] ml-6 md:ml-10">
-                    完全に匿名��可能です。公務員の方でkindle本から独立された方もいらっしゃいます。
-                  </p>
-                </div>
-              </motion.div>
+              {[1, 2, 3].map((_, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={isSection4InView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                >
+                  <div className="bg-[#252525] rounded-2xl p-4 md:p-8 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 flex items-center">
+                      <span className="text-[#0496FB] mr-2 md:mr-4">Q.</span>
+                      本当に個人の能力は関係ないのですか？
+                    </h3>
+                    <p className="text-base sm:text-lg md:text-xl text-[#A4A4A4] ml-6 md:ml-10">
+                      はい。全てマニュアル通りに実行すれば、誰でもできます。
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </motion.div>
         </section>
         <section className="space-y-8">
           <div className="text-center text-[#A4A4A4] text-sm">
@@ -812,13 +812,15 @@ function MainComponent() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 overflow-auto"
           onClick={() => setSelectedImage(null)}
         >
           <motion.div
-            initial={{ scale: 0.5 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0.5 }}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3 }}
             className="relative w-full h-full flex items-center justify-center"
           >
             <Image
@@ -830,12 +832,14 @@ function MainComponent() {
               onClick={(e) => e.stopPropagation()}
               priority
             />
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               className="absolute top-4 right-4 text-white text-sm bg-black/50 px-4 py-2 rounded-full"
               onClick={() => setSelectedImage(null)}
             >
               閉じる
-            </button>
+            </motion.button>
           </motion.div>
         </motion.div>
       )}

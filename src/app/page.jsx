@@ -246,7 +246,7 @@ function MainComponent() {
                       <div className="bg-[#1E1E1E] rounded-xl p-4 md:p-6 transform hover:scale-105 transition-all duration-300">
                         <p className="text-base md:text-2xl">
                           <span className="text-[#0496FB] mr-3">01</span>
-                          今までの生活は変えることなく
+                          今の生活は変えることなく
                         </p>
                       </div>
                       <div className="bg-[#1E1E1E] rounded-xl p-4 md:p-6 transform hover:scale-105 transition-all duration-300">
@@ -271,11 +271,15 @@ function MainComponent() {
                     </div>
                     <div className="bg-[#1E1E1E] rounded-2xl p-6 md:p-8 text-center border-2 border-[#0496FB] transform hover:scale-105 transition-all duration-300">
                       <p className="text-lg md:text-3xl font-bold leading-relaxed">
-                        <span className="text-[#0496FB]">
+                        <span className="text-[#0496FB] block md:inline">
                           「ストック型収益」
                         </span>
-                        ×
-                        <span className="text-[#0496FB]">「フロー型収益」</span>
+                        <span className="block md:inline text-center md:text-left my-2 md:my-0">
+                          ×
+                        </span>
+                        <span className="text-[#0496FB] block md:inline">
+                          「フロー型収益」
+                        </span>
                         <br />
                         「あらかじめ」作っていくことが
                         <span className="text-[#0496FB]">命</span>。
@@ -295,7 +299,7 @@ function MainComponent() {
             className="max-w-7xl mx-auto px-4"
           >
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-8">
-              <span className="text-[#0496FB]">ストック×フロー収入</span>で
+              <span className="text-[#0496FB]">ストック×フロー収入</span>とは
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -326,7 +330,7 @@ function MainComponent() {
                     </div>
                     <div className="bg-[#1E1E1E] rounded-xl p-4">
                       <h4 className="text-[#0496FB] font-bold mb-2">
-                        ログ・YouTube
+                        ブログ・YouTube
                       </h4>
                       <p className="text-[#A4A4A4]">
                         既存コンテンツから広告収入やアフィリエイト収入が継続的に発生
@@ -529,6 +533,11 @@ function MainComponent() {
             <h2 className="text-3xl md:text-6xl font-bold text-center mb-16">
               <span className="text-[#0496FB]">AK講座</span>の流れ
             </h2>
+            <p className="text-base sm:text-lg md:text-3xl text-center mb-8 text-[#A4A4A4]">
+              ブログ売却（<span className="text-[#0496FB]">フロー収入</span>）と
+              <br />
+              kindle本（<span className="text-[#0496FB]">ストック収入</span>）で構築します
+            </p>
             <div className="relative">
               <Image
                 src="/image/nagare.png"
@@ -825,7 +834,7 @@ function MainComponent() {
           >
             <Image
               src={selectedImage}
-              alt="拡大画像"
+              alt="大画像"
               width={1200}
               height={800}
               className="max-w-full max-h-[90vh] object-contain select-none"

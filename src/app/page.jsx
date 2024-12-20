@@ -503,12 +503,12 @@ function MainComponent() {
             </h2>
             <div className="relative">
               <img
-                src="https://ucarecdn.com/e8de4b43-40b8-4068-b8ea-5054a711fc83/-/format/auto/"
+                src="/image/nagare.png"
                 alt="AK講座の4ヶ月間の流れを示す図"
                 className="w-full h-auto max-h-[80vh] object-contain rounded-xl shadow-2xl mx-auto cursor-pointer md:cursor-default"
                 onClick={() => {
                   if (window.innerWidth <= 768) {  // モバイル端末の場合のみ
-                    setSelectedImage("https://ucarecdn.com/e8de4b43-40b8-4068-b8ea-5054a711fc83/-/format/auto/");
+                    setSelectedImage("/image/nagare.png");  // URLを画像の実際のパスに変更
                   }
                 }}
               />
@@ -809,7 +809,7 @@ function MainComponent() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 overflow-auto"
           onClick={() => setSelectedImage(null)}
         >
           <motion.div
@@ -821,7 +821,8 @@ function MainComponent() {
             <img
               src={selectedImage}
               alt="拡大画像"
-              className="max-w-full max-h-[90vh] object-contain"
+              className="max-w-full max-h-[90vh] object-contain select-none"
+              onClick={(e) => e.stopPropagation()}
             />
             <button
               className="absolute top-4 right-4 text-white text-sm bg-black/50 px-4 py-2 rounded-full"

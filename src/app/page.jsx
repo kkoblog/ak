@@ -121,7 +121,7 @@ function MainComponent() {
                   ２つの収入の柱が構築できる
                 </span>
               </h1>
-              <p className="text-xl sm:text-2xl md:text-3xl text-[#A4A4A4] leading-relaxed">
+              <p className="text-base sm:text-2xl md:text-3xl text-[#A4A4A4] leading-relaxed">
                 人間関係に縛られない、属人性ゼロの
                 <br />
                 <span className="text-white font-bold bg-gradient-to-r from-[#0496FB] to-[#0496FB] bg-[length:0%_2px] bg-no-repeat bg-bottom hover:bg-[length:100%_2px] transition-all duration-300">

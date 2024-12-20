@@ -298,7 +298,7 @@ function MainComponent() {
                     </div>
                     <div className="bg-[#1E1E1E] rounded-xl p-4">
                       <h4 className="text-[#0496FB] font-bold mb-2">
-                        ブログ・YouTube
+                        ログ・YouTube
                       </h4>
                       <p className="text-[#A4A4A4]">
                         既存コンテンツから広告収入やアフィリエイト収入が継続的に発生

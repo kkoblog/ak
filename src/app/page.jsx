@@ -298,7 +298,7 @@ function MainComponent() {
             transition={{ duration: 0.8 }}
             className="max-w-7xl mx-auto px-4"
           >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-8">
+            <h2 className="text-2xl sm:text-5xl md:text-6xl font-bold text-center mb-8">
               <span className="text-[#0496FB]">ストック×フロー収入</span>とは
             </h2>
 
@@ -608,7 +608,7 @@ function MainComponent() {
                       ✓
                     </span>
                     <span className="text-white">
-                      顔出し無し、名前出ししない系で月400万収益化
+                      顔出し無し、名前顔出しない系で月400万益化
                     </span>
                   </li>
                   <li className="flex items-center justify-center">

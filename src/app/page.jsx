@@ -135,7 +135,7 @@ function MainComponent() {
         </header>
         <section className="py-24 bg-[#1E1E1E]">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl md:text-6xl font-bold text-center mb-16">
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-center mb-8 md:mb-16">
               <span className="text-[#0496FB]">こんな悩み</span>
               ありませんか？
             </h2>
@@ -196,7 +196,7 @@ function MainComponent() {
         </section>
         <section className="py-24 bg-[#1E1E1E]">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl md:text-6xl font-bold text-center mb-16">
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-center mb-8 md:mb-16">
               <span className="text-[#0496FB]">独立・起業</span>
               に最も重要なこと
             </h2>
@@ -502,15 +502,18 @@ function MainComponent() {
               <span className="text-[#0496FB]">AK講座</span>の流れ
             </h2>
             <div className="relative">
-              <img
+              <Image
                 src="/image/nagare.png"
                 alt="AK講座の4ヶ月間の流れを示す図"
+                width={1200}
+                height={800}
                 className="w-full h-auto max-h-[80vh] object-contain rounded-xl shadow-2xl mx-auto cursor-pointer md:cursor-default"
                 onClick={() => {
-                  if (window.innerWidth <= 768) {  // モバイル端末の場合のみ
-                    setSelectedImage("/image/nagare.png");  // URLを画像の実際のパスに変更
+                  if (window.innerWidth <= 768) {
+                    setSelectedImage("/image/nagare.png");
                   }
                 }}
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1E1E1E] via-transparent to-transparent opacity-30"></div>
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm md:hidden">
@@ -790,7 +793,7 @@ function MainComponent() {
                     本当に匿名で実現できますか？
                   </h3>
                   <p className="text-base sm:text-lg md:text-xl text-[#A4A4A4] ml-6 md:ml-10">
-                    完全に匿名で可能です。公務員の方でkindle本から独立された方もいらっしゃいます。
+                    完全に匿名��可能です。公務員の方でkindle本から独立された方もいらっしゃいます。
                   </p>
                 </div>
               </motion.div>
@@ -818,11 +821,14 @@ function MainComponent() {
             exit={{ scale: 0.5 }}
             className="relative w-full h-full flex items-center justify-center"
           >
-            <img
+            <Image
               src={selectedImage}
               alt="拡大画像"
+              width={1200}
+              height={800}
               className="max-w-full max-h-[90vh] object-contain select-none"
               onClick={(e) => e.stopPropagation()}
+              priority
             />
             <button
               className="absolute top-4 right-4 text-white text-sm bg-black/50 px-4 py-2 rounded-full"

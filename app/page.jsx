@@ -25,6 +25,8 @@ function MainComponent() {
   const handleImageClick = (imageUrl) => {
     if (window.innerWidth <= 768) {
       setSelectedImage(imageUrl);
+    } else {
+      window.open(imageUrl, '_blank');
     }
   };
 
@@ -46,13 +48,22 @@ function MainComponent() {
             transition={{ duration: 0.2 }}
             className="text-xl md:text-2xl font-bold text-[#0496FB]"
           >
-            AK講座
+            <div className="flex items-center gap-2">
+              <Image
+                src="/image/ak.png"
+                alt="AK講座ロゴ"
+                width={40}
+                height={40}
+                className="w-10 h-10 rounded-full"
+              />
+              <span>AK講座</span>
+            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="relative group flex items-center gap-2"
+            className="relative group flex items-center gap-4"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -60,26 +71,13 @@ function MainComponent() {
               onClick={scrollToConsultation}
               className="bg-[#0496FB] text-white px-6 py-2 rounded-full text-sm md:text-base hover:bg-white hover:text-[#0496FB] transition-all duration-300 flex items-center gap-2"
             >
-              <span>副業診断（zoom）</span>
+              <span>無料副業診断</span>
             </motion.button>
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.2 }}
-              className="w-10 h-10 rounded-full overflow-hidden"
-            >
-              <Image
-                src="/image/ak.png"
-                alt="Avatar"
-                width={40}
-                height={40}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
           </motion.div>
         </motion.div>
       </div>
       <div className="max-w-5xl mx-auto px-4 md:px-8 py-12 space-y-16 md:space-y-24 pt-20">
-        <header className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-20">
+        <header className="relative minw-h-screen flex items-center justify-center overflow-hidden -mt-20">
           <div className="absolute inset-0">
             <Image
               src="/image/hero-bg.jpg"
@@ -577,6 +575,12 @@ function MainComponent() {
                   あげ妻
                 </div>
               </div>
+              <a href="https://www.instagram.com/agezuma_" target="_blank">
+  <i class="fab fa-instagram"></i>
+  @agezuma_
+</a>
+
+
               <div className="text-center space-y-6">
                 <ul className="space-y-4 text-base md:text-lg">
                   <li className="flex items-center justify-center">
@@ -648,7 +652,13 @@ function MainComponent() {
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[#0496FB] text-white px-6 py-2 rounded-full text-base md:text-lg font-bold">
                   k子
                 </div>
+                
               </div>
+
+              <a href="https://www.instagram.com/kko_blog" target="_blank">
+  <i class="fab fa-instagram"></i>
+  @kko_blog
+</a>
               <div className="text-center space-y-6">
               <ul className="space-y-4 text-base md:text-lg">
                   <li className="flex items-center justify-center">
